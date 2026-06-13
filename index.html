@@ -18,8 +18,24 @@
 </head>
 <body class="creator-body">
   
+  <!-- 0. 시작(웰컴) 화면 영역 -->
+  <div id="welcome-section" class="view-container welcome-container">
+    <div class="candle-glow"></div>
+    <div class="creator-card text-center no-id-card welcome-card">
+      <div class="no-id-icon-wrapper">
+        <i class="fa-solid fa-gift no-id-icon fa-bounce"></i>
+      </div>
+      <h2>생일 편지 제작소 🎁</h2>
+      <p class="no-id-desc" style="margin-top: 10px; font-size: 1rem; word-break: keep-all;">소중한 친구를 위한 특별하고 감성적인 생일 축하 페이지를 만들어보세요.</p>
+      <p class="no-id-desc-sub" style="font-size: 0.85rem; line-height: 1.5; margin-bottom: 30px; word-break: keep-all;">사진과 편지를 예쁘게 포장하여 3D 자물쇠 선물 상자로 만들어 드립니다.</p>
+      <button id="start-create-btn" class="submit-btn" style="border: none; width: 100%;">
+        <span class="btn-text">편지 제작 하기! ✨</span>
+      </button>
+    </div>
+  </div>
+
   <!-- 1. 편지 작성 폼 영역 -->
-  <div id="create-section" class="view-container creator-container">
+  <div id="create-section" class="view-container creator-container hidden">
     <div class="candle-glow"></div>
     <header class="creator-header">
       <h2><i class="fa-solid fa-wand-magic-sparkles"></i> 생일 편지 제작소</h2>

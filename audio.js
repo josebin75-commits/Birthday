@@ -79,7 +79,8 @@ class MusicBoxPlayer {
       this.ctx = new (window.AudioContext || window.webkitAudioContext)();
       this.masterGain = this.ctx.createGain();
       this.masterGain.connect(this.ctx.destination);
-      this.setVolume(CONFIG.bgmVolume || 0.4);
+      const vol = (typeof CONFIG !== 'undefined' && CONFIG.bgmVolume) ? CONFIG.bgmVolume : 0.4;
+      this.setVolume(vol);
     }
   }
 

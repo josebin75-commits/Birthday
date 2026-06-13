@@ -24,20 +24,30 @@ document.addEventListener('DOMContentLoaded', () => {
     showSection('replies-section');
     loadReplies(letterId);
   } else {
-    showSection('create-section');
+    showSection('welcome-section');
     initCreatorMode();
+  }
+
+  // 시작 버튼 클릭 이벤트 등록
+  const startCreateBtn = document.getElementById('start-create-btn');
+  if (startCreateBtn) {
+    startCreateBtn.addEventListener('click', () => {
+      showSection('create-section');
+    });
   }
 });
 
 // 섹션 전환 함수
 function showSection(sectionId) {
-  const sections = ['create-section', 'success-section', 'replies-section'];
+  const sections = ['welcome-section', 'create-section', 'success-section', 'replies-section'];
   sections.forEach(id => {
     const el = document.getElementById(id);
-    if (id === sectionId) {
-      el.classList.remove('hidden');
-    } else {
-      el.classList.add('hidden');
+    if (el) {
+      if (id === sectionId) {
+        el.classList.remove('hidden');
+      } else {
+        el.classList.add('hidden');
+      }
     }
   });
 }
@@ -269,7 +279,14 @@ function initCreatorMode() {
 
 // 생성 성공 화면 설정
 function setupSuccessSection(id) {
-  const currentOrigin = window.location.origin + window.location.pathname;
+  let currentOrigin = window.location.origin + window.location.pathname;
+  
+  // 로컬 파일(file://)로 접속했거나 로컬 테스트 서버인 경우, 깃허브 배포 주소로 강제 전환
+  if (window.location.protocol === 'file:' || 
+      window.location.hostname === 'localhost' || 
+      window.location.hostname === '127.0.0.1') {
+    currentOrigin = 'https://josebin75-commits.github.io/Birthday/index.html';
+  }
   
   // index.html이 주소 끝에 포함되어 있다면 이를 letter.html로 변경, 없다면 letter.html을 덧붙임
   let letterPath = "";
@@ -281,7 +298,9 @@ function setupSuccessSection(id) {
     letterPath = currentOrigin + '/letter.html';
   }
   const letterUrl = `${letterPath}?id=${id}`;
-  const replyUrl = `${currentOrigin}?view=replies&id=${id}`;
+  const replyUrl = currentOrigin.endsWith('index.html') 
+    ? `${currentOrigin}?view=replies&id=${id}` 
+    : `${currentOrigin.replace(/\/$/, '')}/index.html?view=replies&id=${id}`;
 
   const shareLetterInput = document.getElementById('share-letter-url');
   const shareReplyInput = document.getElementById('share-reply-url');
