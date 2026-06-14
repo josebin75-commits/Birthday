@@ -1263,9 +1263,12 @@ body {
   }
   .letter-paper {
     padding: 20px 15px;
+    background-size: 100% 30px;
+    line-height: 30px;
   }
   .letter-content {
-    font-size: 0.9rem;
+    font-size: 1.05rem;
+    line-height: 30px;
   }
   .celebrate-btn {
     padding: 14px 40px;
