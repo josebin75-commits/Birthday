@@ -43,7 +43,7 @@
 | **상호작용** | 퀴즈 정답 입력 및 [열어보기] 클릭 | 메인 편지 화면 전환 및 하단 폭죽(Confetti) 애니메이션 실행 |
 
 ## 🔗 데모
-[데모 보기 - 편지 제작소로 이동](https://josebin75-commits.github.io/HBD_LETTER/create.html)
+[데모 보기 - 편지 제작소로 이동](https://josebin75-commits.github.io/Birthday/)
 
 ## 🚧 아직 안 되는 것 (부숴보며 찾은 한계점)
 이 프로그램을 직접 테스트하고 부숴보며 다음과 같은 한계점들을 발견했습니다.
